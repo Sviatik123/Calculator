@@ -29,3 +29,6 @@ HEADERS += \
     calculator.h \
     converter.h \
     parser.h
+
+DISTFILES += \
+    .gitignore
