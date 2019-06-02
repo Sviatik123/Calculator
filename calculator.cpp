@@ -101,7 +101,7 @@ void Calculator::calculate()
             i+=2;
         }
         //cos
-        else if (polExp.at(i) == 'c' && exp.at(i + 1) == 'o')
+        else if (polExp.at(i) == 'c' && polExp.at(i + 1) == 'o')
         {
             double operand = expression.top();
             expression.pop();
@@ -117,7 +117,7 @@ void Calculator::calculate()
             i++;
         }
         //ctg
-        else if (polExp.at(i) == 'c' && exp.at(i + 1) == 't')
+        else if (polExp.at(i) == 'c' && polExp.at(i + 1) == 't')
         {
             double operand = expression.top();
             expression.pop();
