@@ -11,7 +11,7 @@ std::string Parser::parse(int size, char* arr[])
 std::string Parser::parse()
 {
     std::string exp;
-    std::cin>>exp;
+    getline(std::cin,exp);
     return exp;
 }
 

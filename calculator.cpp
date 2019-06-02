@@ -13,13 +13,14 @@ void Calculator::calculate()
 {
     std::string inp = "";
     std::stack<double> expression;
-    for (size_t i = 0; i < polExp.length(); i++)
+    size_t length = polExp.length();
+    for (size_t i = 0; i < length; i++)
     {
-        if (polExp[i] != '+'&&polExp[i] != '-'&&polExp[i] != '*'&&polExp[i] != '/'&&polExp[i] != '^'&&polExp[i] != ' ')
+        if ((polExp.at(i) >= 48 && polExp.at(i) <= 57) || polExp.at(i) == '.' || polExp.at(i) == ',')
         {
-            while (polExp[i] != ' ')
+            while (polExp.at(i) != ' ')
             {
-                inp += polExp[i];
+                inp += polExp.at(i);
                 i++;
             }
             double operand = stod(inp);
@@ -27,11 +28,11 @@ void Calculator::calculate()
             inp = "";
             i--;
         }
-        else if (polExp[i] == ' ')
+        else if (polExp.at(i) == ' ')
         {
             continue;
         }
-        else if (polExp[i] == '+')
+        else if (polExp.at(i) == '+')
         {
             double firstOper, secondOper;
             secondOper = expression.top();
@@ -40,9 +41,9 @@ void Calculator::calculate()
             expression.pop();
             expression.push(firstOper + secondOper);
         }
-        else if (polExp[i] == '-')
+        else if (polExp.at(i) == '-')
         {
-            if (polExp[i + 1] == ' ')
+            if (polExp.at(i + 1) == ' ')
             {
                 double firstOper, secondOper;
                 secondOper = expression.top();
@@ -53,9 +54,9 @@ void Calculator::calculate()
             }
             else
             {
-                while (polExp[i] != ' ')
+                while (polExp.at(i) != ' ')
                 {
-                    inp += polExp[i];
+                    inp += polExp.at(i);
                     i++;
                 }
                 double operand = stod(inp);
@@ -64,7 +65,7 @@ void Calculator::calculate()
                 i--;
             }
         }
-        else if (polExp[i] == '*')
+        else if (polExp.at(i) == '*')
         {
             double firstOper, secondOper;
             secondOper = expression.top();
@@ -73,7 +74,7 @@ void Calculator::calculate()
             expression.pop();
             expression.push(firstOper * secondOper);
         }
-        else if (polExp[i] == '/')
+        else if (polExp.at(i) == '/')
         {
             double firstOper, secondOper;
             secondOper = expression.top();
@@ -82,7 +83,7 @@ void Calculator::calculate()
             expression.pop();
             expression.push(firstOper / secondOper);
         }
-        else if (polExp[i] == '^')
+        else if (polExp.at(i) == '^')
         {
             double firstOper, secondOper;
             secondOper = expression.top();
@@ -90,6 +91,46 @@ void Calculator::calculate()
             firstOper = expression.top();
             expression.pop();
             expression.push(pow(firstOper, secondOper));
+        }
+        //sin
+        else if (polExp.at(i) == 's')
+        {
+            double operand = expression.top();
+            expression.pop();
+            expression.push(sin(operand));
+            i+=2;
+        }
+        //cos
+        else if (polExp.at(i) == 'c' && exp.at(i + 1) == 'o')
+        {
+            double operand = expression.top();
+            expression.pop();
+            expression.push(cos(operand));
+            i+=2;
+        }
+        //tg
+        else if (polExp.at(i) == 't')
+        {
+            double operand = expression.top();
+            expression.pop();
+            expression.push(tan(operand));
+            i++;
+        }
+        //ctg
+        else if (polExp.at(i) == 'c' && exp.at(i + 1) == 't')
+        {
+            double operand = expression.top();
+            expression.pop();
+            expression.push(1.0 / tan(operand));
+            i+=2;
+        }
+        //log
+        else if (polExp.at(i) == 'l')
+        {
+            double operand = expression.top();
+            expression.pop();
+            expression.push(log(operand));
+            i+=2;
         }
     }
     result = expression.top();
