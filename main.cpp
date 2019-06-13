@@ -1,6 +1,5 @@
 #include <QCoreApplication>
 #include <calculator.h>
-#include<cctype>
 
 int main(int argc, char *argv[])
 {
@@ -9,17 +8,9 @@ int main(int argc, char *argv[])
     while (true)
     {
         Calculator calc;
-        if(calc.getIsValid())
-        {
-            calc.calculate();
-            calc.printResult();
-        }
-        else
-        {
-            std::cout<<"Invalid expression\n";
-        }
+        calc.calculate();
+        calc.printResult();
     }
-
 
     //return a.exec();
 }

@@ -19,6 +19,10 @@ Calculator::Calculator()
 
 void Calculator::calculate()
 {
+    if(!isValid)
+    {
+        return;
+    }
     std::string inp = "";
     std::stack<double> expression;
     size_t length = polExp.length();
@@ -151,5 +155,12 @@ bool Calculator::getIsValid()
 
 void Calculator::printResult()
 {
-    std::cout << "Result: " << result << std::endl;
+    if(isValid)
+    {
+        std::cout << "Result: " << result << std::endl;
+    }
+    else
+    {
+        std::cout << "Invalid expression\n";
+    }
 }
