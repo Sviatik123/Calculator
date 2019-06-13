@@ -4,9 +4,17 @@ Calculator::Calculator()
 {
     Parser pars;
     exp = pars.parse();
-    Converter conv;
-    polExp = conv.convert(exp);
-    result = 0;
+    Validator val;
+    isValid = val.isValid(exp);
+    if(isValid)
+    {
+        Converter conv;
+        polExp = conv.convert(exp);
+    }
+    else
+    {
+       polExp = "";
+    }
 }
 
 void Calculator::calculate()
@@ -136,7 +144,12 @@ void Calculator::calculate()
     result = expression.top();
 }
 
+bool Calculator::getIsValid()
+{
+    return isValid;
+}
+
 void Calculator::printResult()
 {
-    std::cout<<result<<std::endl;
+    std::cout << "Result: " << result << std::endl;
 }

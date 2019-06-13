@@ -18,7 +18,8 @@ SOURCES += \
         calculator.cpp \
         converter.cpp \
         main.cpp \
-        parser.cpp
+        parser.cpp \
+        validator.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -28,7 +29,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     calculator.h \
     converter.h \
-    parser.h
+    parser.h \
+    validator.h
 
 DISTFILES += \
     .gitignore
